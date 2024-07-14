@@ -27,7 +27,7 @@ class StoreCourseRequest extends FormRequest
             'about' => 'required|string',
             'category_id' => 'required|integer',
             'thumbnail' => 'required|image|mimes:png,jpg,svg,jpeg',
-            'course_kepoints.*' => 'required|string|max:255'
+            'course_keypoints.*' => 'required|string|max:255'
         ];
     }
 }

@@ -35,11 +35,12 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('courses', CourseController::class)->middleware('role:owner|teacher');
 
-        Route::resource('subscribe_transactions', SubscribeTransactionController::class)->middleware('role:owner');
+        Route::resource('subscribe_transactions', SubscribeTransactionController::class,)->middleware('role:owner');
 
         Route::get('/add/video/{course:id}', [CourseVideoController::class, 'create'])->middleware('role:teacher|owner')->name('course.add_video');
 
-        Route::get('/add/video/save/{course:id}', [CourseVideoController::class, 'create'])->middleware('role:teacher|owner')->name('course.add_video.save');
+        Route::post('/add/video/save/{course:id}', [CourseVideoController::class, 'store'])->middleware('role:teacher|owner')->name('course.add_video.save');
+
 
         Route::resource('course_videos', CourseVideoController::class)->middleware('role:owner|teacher');
     });
