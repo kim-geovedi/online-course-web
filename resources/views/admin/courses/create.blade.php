@@ -43,13 +43,19 @@
                         <select name="category_id" id="category_id" class="py-3 rounded-lg pl-3 w-full border border-slate-300">
                             <option value="">Choose category</option>
                             @forelse($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                             @empty
                             @endforelse
                         </select>
 
                         <x-input-error :messages="$errors->get('category')" class="mt-2" />
-                    </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="price" :value="__('price')" />
+                            <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" required autofocus autocomplete="price" />
+                            <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                        </div>
 
                     <div class="mt-4">
                         <x-input-label for="about" :value="__('about')" />

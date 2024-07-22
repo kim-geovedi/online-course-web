@@ -54,6 +54,12 @@
                     </div>
 
                     <div class="mt-4">
+                        <x-input-label for="price" :value="__('price')" />
+                        <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" required autofocus autocomplete="price" />
+                        <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
                         <x-input-label for="about" :value="__('about')" />
                         <textarea name="about" id="about" cols="30" rows="5" class="border border-slate-300 rounded-xl w-full">{{ $course->about }}</textarea>
                         <x-input-error :messages="$errors->get('about')" class="mt-2" />

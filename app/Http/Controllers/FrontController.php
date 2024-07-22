@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\DB;
 class FrontController extends Controller
 {
     public function index(){
+        $categories = Category::all();
         $courses = Course::with(['category', 'teacher', 'students'])->orderBy('id')->get();
-        return view('front.index', compact('courses'));
+        return view('front.index', compact('courses','categories'));
     }
     public function details(Course $course){
         return view('front.details', compact('course'));

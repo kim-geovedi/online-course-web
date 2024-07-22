@@ -1,56 +1,29 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ asset('css/output.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-</head>
-<body class="text-black font-poppins pt-10 pb-[50px]">
-    <section id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 pb-[50px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden">
-        <nav class="flex justify-between items-center pt-6 px-[50px]">
-            <a href="">
-                <img src="assets/logo/logo.svg" alt="logo">
-            </a>
-            <ul class="flex items-center gap-[30px] text-white">
-                <li>
-                    <a href="{{ route('front.index') }}" class="font-semibold">Home</a>
-                </li>
-                <li>
-                    <a href="{{ route('front.pricing') }}" class="font-semibold">Pricing</a>
-                </li>
-                <li>
-                    <a href="" class="font-semibold">Benefits</a>
-                </li>
-                <li>
-                    <a href="" class="font-semibold">Stories</a>
-                </li>
-            </ul>
-            @auth
-            <div class="flex gap-[10px] items-center">
-                <div class="flex flex-col items-end justify-center">
-                    <p class="font-semibold text-white">Hi, {{ Auth::user()->name }}</p>
-                    @if (Auth::user()->hasActiveSubscription())
-                    <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
-                    @endif
-                </div>
-                <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
-                    </a>
+@extends('front.layouts.main')
+@section('title', 'Home')
+@section('header')
+<section id="home" class="">
+    <div class="container pt-36 px-[50px]">
+        <div class="flex flex-wrap">
+            <div class="w-full self-center px-4 lg:w-1/2">
+                <h1 class="text-base font-semibold mx-auto text-white text-tulisan md:text-xl">Hello, I am <span class="block font-bold text-primary text-4xl my-1 lg:text-5xl"><span class="typing-container">Kim Geovedi</span></span></h1>
+            <h2 class=" font-medium text-lg mb-5 text-white text-tulisan lg:text-2xl">Web Developer | <span class="text-primary">Data Analyst</span></h2>
+            <p class="font-medium mb-10 text-paragraf leading-relaxed"></p>
+                <a href="#contact" class="text-base  font-semibold bg-primary text-white py-3 px-8 rounded-full hover:shadow-lg hover:opacity-50 transition duration-300 ease-in-out">Contact Me</a>
+            </div>
+            <div class="w-full self-end px-4 lg:w-1/2">
+                <div class="relative mt-10 lg:mt-9 lg:right-0">
+                    <img src="assets/object.png" alt="" class="max-w-full mx-auto">
+                    <span class="absolute -top-0 -z-10 left-1/2 -translate-x-1/2 md:scale-125 ">
+                        <svg width="400" height="400"  viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#8b5cf6" d="M46.2,-49.7C58.6,-33.8,66.5,-16.9,64.3,-2.3C62,12.3,49.5,24.6,37.1,36.1C24.6,47.7,12.3,58.3,-2.8,61.2C-18,64,-36,59,-45.1,47.5C-54.1,36,-54.2,18,-50.8,3.4C-47.4,-11.2,-40.5,-22.4,-31.5,-38.4C-22.4,-54.3,-11.2,-74.9,2.8,-77.7C16.9,-80.6,33.8,-65.6,46.2,-49.7Z" transform="translate(100 100) scale(1.2)" />
+                        </svg>
+                    </span>
                 </div>
             </div>
-            @endauth
-            @guest
-            <div class="flex gap-[10px] items-center">
-                <a href="/register" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="/login" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
-            </div>
-            @endguest
-        </nav>
-        <div class="flex flex-col items-center gap-[30px]">
+        </div>
+    </div>
+</section>
+        {{-- <div class="flex flex-col items-center gap-[30px]">
             <div class="w-fit flex items-center gap-3 p-2 pr-6 rounded-full bg-[#FFFFFF1F] border border-[#3477FF24]">
                 <div class="w-[100px] h-[48px] flex shrink-0">
                     <img src="assets/icon/avatar-group.png" class="object-contain" alt="icon">
@@ -83,8 +56,9 @@
             <div>
                 <img src="assets/icon/logo-52.svg" alt="icon">
             </div>
-        </div>
-    </section>
+        </div> --}}
+@endsection
+@section('content')
     <section id="Top-Categories" class="max-w-[1200px] mx-auto p-[70px_82px_0px] gap-[30px] mb-4">
         <div class="flex flex-col gap-[30px]">
             <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
@@ -99,67 +73,23 @@
             </div>
         </div>
         <div class="flex justify-center gap-[30px]">
-            <div class="w-full grid grid-cols-3 sm:grid-cols-1 gap-4 text-center py-8">
+            <div class="w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 text-center py-8">
+                @forelse ($categories as $category)
                 <div>
-                    <a href="{{ route('front.category','software-development') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
+                    <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
                         <div class="w-[70px] h-[70px] flex shrink-0">
                             <img src="assets/icon/Web Development 1.svg" class="object-contain" alt="icon">
                         </div>
-                        <p class="font-bold text-lg">Software Development</p>
+                        <p class="font-bold text-lg">{{ $category->name }}</p>
                     </a>
                 </div>
-                <div>
-                    <a href="{{ route('front.category','digital-marketing') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1-1.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Digital Marketing</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('front.category','business-intelligence') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1-2.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Business Intelligence</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('front.category','freelancing-journey') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1-3.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Freelancing Journey</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('front.category','product-customer-data-analytics') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1-1.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Product & Customer Data Analytics</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('front.category','human-resource') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1-4.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Human Resource</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('front.category','software-quality-assurance') }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                        <div class="w-[70px] h-[70px] flex shrink-0">
-                            <img src="assets/icon/Web Development 1.svg" class="object-contain" alt="icon">
-                        </div>
-                        <p class="font-bold text-lg">Software Quality Assurance</p>
-                    </a>
-                </div>
+                @empty
+                <p>Categories Not Found</p>
+                @endforelse
             </div>
         </div>
     </section>
-    <section id="Popular-Courses" class="max-w-[1200px] mx-auto flex flex-col p-[70px_82px_0px] gap-[30px] mt-20 bg-[#F5F8FA] rounded-[32px]">
+    {{-- <section id="Popular-Courses" class="max-w-[1200px] mx-auto flex flex-col p-[70px_82px_0px] gap-[30px] mt-20 bg-[#F5F8FA] rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">
             <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                 <div>
@@ -190,21 +120,7 @@
                             <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->name }}</a>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center gap-[2px]">
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
+                                 <p class="font-semibold">Rp. {{ $course->price }}</p>
                                 </div>
                                 <p class="text-right text-[#6D7786]">{{ $course->students->count() }} students</p>
                             </div>
@@ -716,144 +632,5 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section id="FAQ" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[100px]">
-        <div class="flex justify-between items-center">
-            <div class="flex flex-col gap-[30px]">
-                <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
-                    <div>
-                        <img src="assets/icon/medal-star.svg" alt="icon">
-                    </div>
-                    <p class="font-medium text-sm text-[#FF6129]">Grow Your Career</p>
-                </div>
-                <div class="flex flex-col">
-                    <h2 class="font-bold text-[36px] leading-[52px]">Get Your Answers</h2>
-                    <p class="text-lg text-[#475466]">It’s time to upgrade skills without limits!</p>
-                </div>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Contact Our Sales</a>
-            </div>
-            <div class="flex flex-col gap-[30px] w-[552px] shrink-0">
-                <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-[#FF6129] has-[.hide]:border-0 w-full">
-                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
-                        <span class="font-semibold text-lg text-left">Can beginner join the course?</span>
-                        <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
-                        </div>
-                    </button>
-                    <div id="accordion-faq-1" class="accordion-content hide">
-                        <p class="leading-[30px] text-[#475466] pt-[10px]">Yes, we have provided a variety range of course from beginner to intermediate level to prepare your next big career,</p>
-                    </div>
-                </div>
-                <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-[#FF6129] has-[.hide]:border-0 w-full">
-                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-2">
-                        <span class="font-semibold text-lg text-left">How long does the implementation take?</span>
-                        <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
-                        </div>
-                    </button>
-                    <div id="accordion-faq-2" class="accordion-content hide">
-                        <p class="leading-[30px] text-[#475466] pt-[10px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore placeat ut nostrum aperiam mollitia tempora aliquam perferendis explicabo eligendi commodi.</p>
-                    </div>
-                </div>
-                <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-[#FF6129] has-[.hide]:border-0 w-full">
-                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-3">
-                        <span class="font-semibold text-lg text-left">Do you provide the job-guarantee program?</span>
-                        <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
-                        </div>
-                    </button>
-                    <div id="accordion-faq-3" class="accordion-content hide">
-                        <p class="leading-[30px] text-[#475466] pt-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque facere ipsum animi sunt iure!</p>
-                    </div>
-                </div>
-                <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-[#FF6129] has-[.hide]:border-0 w-full">
-                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-4">
-                        <span class="font-semibold text-lg text-left">How to issue all course certificates?</span>
-                        <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
-                        </div>
-                    </button>
-                    <div id="accordion-faq-4" class="accordion-content hide">
-                        <p class="leading-[30px] text-[#475466] pt-[10px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae itaque facere ipsum animi sunt iure!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col pt-[70px] pb-[50px] px-[100px] gap-[50px] bg-[#F5F8FA] rounded-[32px]">
-        <div class="flex justify-between">
-            <a href="">
-                <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
-                </div>
-            </a>
-            <div class="flex flex-col gap-5">
-                <p class="font-semibold text-lg">Products</p>
-                <ul class="flex flex-col gap-[14px]">
-                    <li>
-                        <a href="" class="text-[#6D7786]">Online Courses</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Career Guidance</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Expert Handbook</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Interview Simulations</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex flex-col gap-5">
-                <p class="font-semibold text-lg">Company</p>
-                <ul class="flex flex-col gap-[14px]">
-                    <li>
-                        <a href="" class="text-[#6D7786]">About Us</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Media Press</a>
-                    </li>
-                    <li class="flex items-center gap-[10px]">
-                        <a href="" class="text-[#6D7786]">Careers</a>
-                        <div class="gradient-badge w-fit p-[6px_10px] rounded-full border border-[#FED6AD] flex items-center">
-                            <p class="font-medium text-xs text-[#FF6129]">We’re Hiring</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Developer APIs</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex flex-col gap-5">
-                <p class="font-semibold text-lg">Resources</p>
-                <ul class="flex flex-col gap-[14px]">
-                    <li>
-                        <a href="" class="text-[#6D7786]">Blog</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">FAQ</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Help Center</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-[#6D7786]">Terms & Conditions</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved Alqowy BuildWithAngga 2024</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script
-        src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-
-</body>
-</html>
+    </section> --}}
+    @endsection

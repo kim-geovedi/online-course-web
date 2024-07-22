@@ -14,6 +14,7 @@ class Course extends Model
         'name',
         'slug',
         'about',
+        'price',
         'path_trailer',
         'thumbnail',
         'teacher_id',

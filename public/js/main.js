@@ -1,3 +1,4 @@
+
 // Accordion funtion
 document.addEventListener('DOMContentLoaded', function() {
     const accordionBtns = document.querySelectorAll('.accordion-button');

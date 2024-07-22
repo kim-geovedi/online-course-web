@@ -14,7 +14,7 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/details/{course:slug}', [FrontController::class, 'details'])->name('front.details');
 Route::get('/category/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
-
+Route::post('donation/pay', [App\Http\Controllers\DonationController::class, 'pay'])->name('donation.pay');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
